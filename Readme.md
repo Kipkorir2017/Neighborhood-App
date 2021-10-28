@@ -53,6 +53,6 @@ There are no known bugs
 If you have any question or contributions, please email me at [pkobenj41@gmail.com]
 
 # License
-License: <a href>MIT</>
+License: <a href="https://github.com/Kipkorir2017/Neighborhood-App/blob/master/License">MIT</a>
 
 Copyright &#169; 2021 Benjamin Kipkorir
