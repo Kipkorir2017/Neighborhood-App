@@ -2,7 +2,7 @@ from django.conf.urls import  url
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-
+from django.urls import path
 #create urls
 urlpatterns = [
     url('',views.display_index,name='index'), 
