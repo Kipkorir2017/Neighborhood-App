@@ -33,3 +33,51 @@ class ProfileTestCase(TestCase):
         self.profile.update_profile(self.profile.user_id)
         self.profile.save_profile()
         self.assertTrue(Profile,self.profile.user)
+
+class BusinessTest(TestCase):
+    def setUp(self):
+        self.user=User(username='username',password='password')
+        self.user.save()
+        self.neighborhood=Neighbourhood(name='kapsa',hood_location='katana',description='The best neighborhood',admin=self.user,hood_photo='image.jpg')
+        self.neighborhood.save()
+        self.buss=Business(user=self.user,business_name='BenTec',business_hood=self.neighborhood,business_email='bentec@gmail.com',business_desc='The best mall around')
+        self.buss.save()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.buss,Business))
+
+    def test_save_business(self):
+        self.buss.save_business()
+        buss=Business.objects.all()
+        self.assertTrue(len(buss)>0)
+    
+    def test_delete_business(self):
+        self.buss.delete_business()
+        buss=Business.objects.all()
+        self.assertTrue(len(buss)>0)
+
+
+class PostTest(TestCase):
+    def setUp(self):
+        self.user=User(username='username',password="password")
+        self.user.save()
+        self.neighborhood=Neighbourhood(name='kapsa',hood_location='katana',description='The best neighborhood',admin=self.user,hood_photo='image.jpg')
+        self.neighborhood.save()
+        self.post=Post(user=self.user,title='kkl',image='image.png',content='post test',created=datetime.datetime,neighbourhood=self.neighborhood)
+        self.post.save()
+
+    def test__instance(self):
+        self.assertTrue(isinstance(self.post,Post))
+
+    def test_save_post(self):
+        self.post.save_post()
+        post=Post.objects.all()
+        self.assertTrue(len(post)>0)
+
+    def test_delete_post(self):
+        self.post.delete_post()
+        post=Post.objects.all()
+        self.assertTrue(len(post)>0)
+
+        
+
