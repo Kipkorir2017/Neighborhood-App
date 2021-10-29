@@ -68,13 +68,13 @@ def hood(request):
     return render(request, 'newhood.html', {"form": form})
 
 @login_required(login_url='/accounts/login/')
-def joinhood(request, id):
+def join_hood(request, id):
     hood = get_object_or_404(Neighbourhood, id=id)
     request.user.profile.neighbourhood = hood
     request.user.profile.save()
     return redirect('index')
 
-def leavehood(request, id):
+def leave_hood(request, id):
     hood = get_object_or_404(Neighbourhood, id=id)
     request.user.profile.neighbourhood = None
     request.user.profile.save()
