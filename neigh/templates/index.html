@@ -1,26 +1,17 @@
-{%extends 'base.html'%}
+{% extends 'base.html' %}
 {% block content %}
-{{block.super}}
-<!DOCTYPE html>
-<html lang="en">
+<br>
+<style>
+    .container-fluid {
+        margin-left: 5%;
+        margin-right: 5%;
 
-<head>
-    <style>
-        * {
+    }
+    * {
             font-family: 'Lora', serif;
         }
-
-        .html {
-            overflow: hidden;
-        }
-
-        .main-body {
-            padding-bottom: 30%;
-        }
-    </style>
-</head>
-
-<body>
+</style>
+<div class="container">
     <div class="container">
         <div class="row">
             <div class="col-md-4 main-body">
@@ -47,11 +38,10 @@
                 </div>
             </div>
         </div>
-        
-        {% for hood in neigborhoods %}
+        {% for hood in hoods %}
         <div class="col-lg-4">
             <div
-                style="background-color: #ebd989;box-sizing: border-box; margin-top:2%;box-shadow: 0vh 0vh 1vh gainsboro;">
+                style="background-color: #91c7f3;box-sizing: border-box; margin-top:2%;box-shadow: 0vh 0vh 1vh gainsboro;">
                 <div class="row" style="padding-top: 1%">
                     <div class="col-md-12">
                         <h4 style="font-weight:600;">Name: <a href="{% url 'view_hood' id=hood.id %}" class="text-right"
@@ -68,7 +58,7 @@
                 </div>
                 <div class="">
                     <a href="{% url 'view_hood' id=hood.id %}">
-                        <img src="{{hood.hood_photo.url}}" class="img-responsive" alt="{{image.name}}"
+                        <img src="{{hood.hood_photo.url}}" class="img-responsive" alt="{{image.hood_name}}"
                             style="width:100%;width:100%">
                         <div class="overlay">
                         </div>
@@ -79,12 +69,12 @@
                 <div style="padding-top:1%;padding-bottom:1%">
                     {%if request.user.profile.neighbourhood == hood %}
 
-                    <a class="btn btn-warning" href="{%url 'leavehood' hood.id%}">Leave Hood</a>
+                    <a class="btn btn-success" href="{%url 'leavehood' hood.id%}">Leave Hood</a>
 
                     {%elif not request.user.profile.neighbourhood%}
 
 
-                    <a class="btn btn-info" href="{%url 'joinhood' hood.id%}">Join Hood</a>
+                    <a class="btn btn-primary" href="{%url 'joinhood' hood.id%}">Join Hood</a>
 
                     {%endif%}
                 </div>
@@ -96,21 +86,16 @@
 
 
     </div>
-    </div>
-
-
-    </div>
-    <div class="footer">
-        <footer class="page-footer">
-            <div style=" font-size:12pt;">
-                <div class="footer-copyright py-3"
-                    style="padding-left: 42%;background-color:#050530;padding:20px;text-align:center;color:wheat">
-                    &#169; 2021: Benjamin Kipkorir
-                </div>
+</div>
+<div class="footer">
+    <footer class="page-footer">
+        <div style=" font-size:12pt;">
+            <div class="footer-copyright py-3"
+                style="padding-left: 42%;background-color:#050530;padding:20px;text-align:center;color:wheat">
+                &#169; 2021: Benjamin Kipkorir
             </div>
-        </footer>
-    </div>
-</body>
+        </div>
+    </footer>
+</div>
 
-</html>
-{%endblock%}
+{% endblock %}
