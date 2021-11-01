@@ -16,7 +16,7 @@ urlpatterns = [
     url('hood_info/(?P<id>\d+)', views.view_hood, name='view_hood'),
     url('new_post', views.new_post, name='post'),
     url('new_business/', views.new_business, name='new_business'),
-    
+    url('loggedin',views.loginPage,name='login')
 ]
 if settings.DEBUG:
     urlpatterns+= static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)

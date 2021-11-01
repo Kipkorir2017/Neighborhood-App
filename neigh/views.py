@@ -30,6 +30,16 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'registration/registration_form.html', {'form': form})
 
+def loginPage(request):
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        print('user:',user)
+        if user is not None:
+            login(request, user)
+            return redirect('index')
+    return render(request,"registration/login.html")
 
 @login_required(login_url='/accounts/login/')
 def profile(request):
