@@ -7,9 +7,10 @@
         margin-right: 5%;
 
     }
+
     * {
-            font-family: 'Lora', serif;
-        }
+        font-family: 'Lora', serif;
+    }
 </style>
 <div class="container">
     <div class="container">
@@ -38,6 +39,11 @@
                 </div>
             </div>
         </div>
+        <div class=row>
+            <div class=col-md-12>
+                <button class="btn btn-primary"><a href="{%url 'new_business'%}"><span style="color:white">Add business</span></a></button>
+            </div>
+        </div>
         {% for hood in hoods %}
         <div class="col-lg-4">
             <div
@@ -54,7 +60,7 @@
                     <div class="col-md-6" style="padding-bottom: 2%;font-weight:600;"> Location: {{hood.hood_location}}
                     </div>
                 </div>
-                <div>
+                <div class="">
                     <a href="{% url 'view_hood' id=hood.id %}">
                         <img src="{{hood.hood_photo.url}}" class="img-responsive" alt="{{image.hood_name}}"
                             style="width:100%;width:100%">

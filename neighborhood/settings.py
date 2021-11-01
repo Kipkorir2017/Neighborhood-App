@@ -10,12 +10,23 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-
-from pathlib import Path
 import os
+from pathlib import Path
 import django_heroku
 import dj_database_url
 from decouple import config,Csv
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+
+cloudinary.config( 
+  cloud_name = "bentec", 
+  api_key = "845195192227671", 
+  api_secret = "FkrrelGjjHOBQhkamdIUVzyggf8" 
+)
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
